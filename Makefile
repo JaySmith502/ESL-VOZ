@@ -40,6 +40,9 @@ test-acceptance:
 test-frontend:
 	cd frontend && npm test
 
+test-e2e:
+	cd frontend && npm run test:e2e
+
 test-all: test-backend test-frontend lint-content
 
 prod:

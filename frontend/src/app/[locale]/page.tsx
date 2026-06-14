@@ -1,14 +1,14 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 
 export default function SplashPage() {
   const t = useTranslations("splash");
   const router = useRouter();
 
-  const choose = (locale: string) => {
-    router.push(`/${locale}/login`);
+  const choose = (locale: "en" | "es") => {
+    router.push("/login", { locale });
   };
 
   return (

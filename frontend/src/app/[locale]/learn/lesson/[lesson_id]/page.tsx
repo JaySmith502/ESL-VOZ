@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams } from "next/navigation";
+import { Link } from "@/i18n/routing";
 import { api } from "@/lib/api";
 import { StepRenderer } from "@/components/lesson-player/StepRenderer";
 
@@ -39,9 +40,9 @@ export default function LessonPage() {
       <main className="flex min-h-screen flex-col items-center justify-center p-6">
         <div className="bg-white rounded-2xl shadow p-8 text-center">
           <h2 className="text-2xl font-bold mb-4">Lesson complete!</h2>
-          <a href="/learn" className="rounded-lg bg-brand-600 px-6 py-3 text-white font-medium hover:bg-brand-700 inline-block">
+          <Link href="/learn" className="rounded-lg bg-brand-600 px-6 py-3 text-white font-medium hover:bg-brand-700 inline-block">
             Back to Learn
-          </a>
+          </Link>
         </div>
       </main>
     );

@@ -29,8 +29,11 @@ cd esl-voice
 
 - Python 3.12
 - [uv](https://docs.astral.sh/uv/getting-started/installation/)
-- Node.js 20 + npm
-- Docker Desktop or Docker Engine
+- Node.js 20+ and npm
+- Docker Desktop (Mac/Windows) or Docker Engine (Linux)
+- `make` — on Windows, install via Git Bash, WSL2, or
+  `choco install make`. All `make` targets in this repo assume a Unix shell
+  (bash). PowerShell users can run the underlying commands by hand.
 
 ### 3. Backend dependencies
 
@@ -54,18 +57,32 @@ Copy the example file and fill in the values:
 cp .env.example .env
 ```
 
+There are **two** env files in this repo:
+
+- `backend/.env` — read by the FastAPI app (via `backend/app/core/config.py`). This is what local dev uses. Default is sqlite so you can run without Postgres if you want.
+- `.env` (project root) — passed to `docker compose --env-file` for `make prod`. The frontend's `NEXT_PUBLIC_API_URL` also belongs here.
+
+For local dev with Postgres, set in **`backend/.env`**:
+
 ```bash
-# .env — local development
-DATABASE_URL=postgresql+asyncpg://eslvoice:eslvoice@localhost:5432/eslvoice
+# backend/.env — local development
+# The backend uses the SYNC psycopg2 driver. Do NOT use postgresql+asyncpg here.
+DATABASE_URL=postgresql+psycopg2://eslvoice:eslvoice@localhost:5432/eslvoice
 REDIS_URL=redis://localhost:6379/0
 SECRET_KEY=generate-a-random-string-here
 FRONTEND_URL=http://localhost:3000
-NEXT_PUBLIC_API_URL=http://localhost:8000
+ENVIRONMENT=development
 RESEND_API_KEY=re_xxxxxxxx
 ANTHROPIC_API_KEY=sk-ant-api03-xxxxxxxx
 OPENAI_API_KEY=sk-xxxxxxxx
 DEEPGRAM_API_KEY=xxxxxxxx
 ```
+
+To skip Postgres entirely for quick local work, leave `DATABASE_URL` unset and
+the backend will fall back to `sqlite:///./eslvoice_dev.db`.
+
+The frontend reads `NEXT_PUBLIC_API_URL` from `frontend/.env.local` (or its
+process environment), not from `backend/.env`.
 
 Generate a secret key locally:
 
@@ -79,7 +96,15 @@ python -c "import secrets; print(secrets.token_urlsafe(48))"
 make db
 ```
 
-This starts Postgres + pgvector and Redis, runs Alembic migrations, and seeds the lesson catalog.
+This starts Postgres (pgvector image) and Redis, then runs `alembic upgrade
+head` and the lesson seeder.
+
+> **Note:** `backend/alembic/versions/` is currently empty, so `alembic upgrade
+> head` is a no-op. Schema is created at app startup by
+> `SQLModel.metadata.create_all` (in the FastAPI lifespan) and by the seed
+> script. Generate the first real migration with
+> `cd backend && alembic revision --autogenerate -m "initial"` before relying
+> on Alembic for production schema management.
 
 ### 7. Start dev servers
 
@@ -225,7 +250,9 @@ After setup, confirm each piece works:
 
 - [ ] `make test-backend` passes
 - [ ] `make test-acceptance` passes
+- [ ] `make test-frontend` passes
 - [ ] `make lint-content` passes
+- [ ] `make test-all` passes (chains all of the above)
 - [ ] Frontend builds: `cd frontend && npm run build`
 - [ ] Backend starts: `cd backend && uvicorn app.main:app`
 - [ ] Health endpoint responds: `curl http://localhost:8000/health`

@@ -8,6 +8,10 @@ node_modules/
 out/
 build/
 coverage/
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
 .vercel
 *.tsbuildinfo
 next-env.d.ts
