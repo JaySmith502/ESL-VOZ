@@ -1,0 +1,77 @@
+lesson_id: ordering_food_a1_survival
+title:
+  en: "Ordering Food at a Restaurant"
+  es: "Ordenando Comida en un Restaurante"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a1.1-spk-surv-#1
+  - cefr-a1.1-lis-surv-#2
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A1.1
+estimated_minutes: 12
+prerequisites:
+  mastery_cells: []
+  vocab_known:
+    - hello
+    - please
+    - thank you
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice ordering food politely in English."
+      es: "Hoy practicarás cómo ordenar comida de manera educada en inglés."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these words: water, food, menu, please, thank you."
+      es: "Aprende estas palabras: water, food, menu, please, thank you."
+    config:
+      words:
+        - en: water
+          es: agua
+        - en: food
+          es: comida
+        - en: menu
+          es: menú
+        - en: please
+          es: por favor
+        - en: thank you
+          es: gracias
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each word with its meaning."
+      es: "Empareja cada palabra con su significado."
+    config:
+      items:
+        - prompt: water
+          answer: agua
+        - prompt: menu
+          answer: menú
+        - prompt: please
+          answer: por favor
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'I would like water, please.'"
+      es: "Practica: 'I would like water, please.'"
+    config:
+      target: "I would like water, please."
+      mode: Speaking
+      acceptable_variants:
+        - "i would like water please"
+        - "can i have water please"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You practiced ordering politely."
+      es: "¡Muy bien! Practicaste cómo ordenar de manera educada."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

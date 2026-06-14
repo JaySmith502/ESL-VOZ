@@ -1,0 +1,81 @@
+lesson_id: shopping_a12_survival
+title:
+  en: "Shopping for Clothes"
+  es: "Comprando Ropa"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a1.2-spk-surv-#1
+  - cefr-a1.2-lis-surv-#1
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A1.2
+estimated_minutes: 14
+prerequisites:
+  mastery_cells: []
+  vocab_known:
+    - please
+    - thank you
+    - how much
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice buying clothes and asking about prices."
+      es: "Hoy practicarás cómo comprar ropa y preguntar precios."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these words: shirt, pants, shoes, size, fitting room, expensive, cheap."
+      es: "Aprende estas palabras: shirt, pants, shoes, size, fitting room, expensive, cheap."
+    config:
+      words:
+        - en: shirt
+          es: camisa
+        - en: pants
+          es: pantalones
+        - en: shoes
+          es: zapatos
+        - en: size
+          es: talla
+        - en: fitting room
+          es: probador
+        - en: expensive
+          es: caro
+        - en: cheap
+          es: barato
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each word with its meaning."
+      es: "Empareja cada palabra con su significado."
+    config:
+      items:
+        - prompt: shoes
+          answer: zapatos
+        - prompt: size
+          answer: talla
+        - prompt: expensive
+          answer: caro
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'How much is this shirt?'"
+      es: "Practica: 'How much is this shirt?'"
+    config:
+      target: "How much is this shirt?"
+      mode: Speaking
+      acceptable_variants:
+        - "how much is this shirt"
+        - "how much does this shirt cost"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You practiced shopping for clothes in English."
+      es: "¡Muy bien! Practicaste cómo comprar ropa en inglés."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

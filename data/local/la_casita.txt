@@ -1,0 +1,60 @@
+La Casita Center — Louisville, KY
+Source: https://www.lacasitacenter.org/ (scraped 2026-06-13)
+
+ABOUT
+La Casita Center is a grassroots non-profit located in Louisville, KY that accompanies
+families in the Latinx community. Founded in 2005 by a small group of social workers,
+teachers, mothers, and members of religious communities who recognized a growing need
+for community building and access to services, education, and support in the Latinx
+community.
+
+MISSION
+To empower Latinx families, providing a foundation for systemic change with long-term
+effects. La Casita uses a ground-up strategy to help the community access services and
+overcome barriers.
+
+MODEL
+The "accompaniment model" — an evidence-based practice focused on empowering individuals
+to make changes in their own lives. La Casita uses accompaniment to address systemic
+issues through community care that is trauma-informed and rooted in equity and
+accessibility. Holistic approach for the whole person/family.
+
+IMPACT (2025 Annual Report figures)
+- 76,024 services provided
+- 1,211 outgoing referrals
+- 3,705 individuals accompanied
+- 2,563 families accompanied
+- 8,161 phone calls handled
+- 99 unique zip codes served
+- 44 countries of origin
+- 23 languages spoken
+
+WAYS TO ENGAGE
+- SHARE — donations
+- HOST — fundraising / food drive events
+- VOLUNTEER — accompany families at community events
+- JOIN — advocacy circle
+
+UPCOMING EVENTS (annual cycle)
+- Latinx Pride (June)
+- Back to School (July)
+- Circle of Solidarity (August)
+- Aflora (September)
+- Día de los Muertos (TBA)
+- Holiday Party (December)
+
+PUBLIC RESOURCES LINKED FROM HOMEPAGE
+- 2025 Annual Report: https://www.lacasitacenter.org/_files/ugd/8759f2_41c3b3ea63744ea2b4a172dac5bf0e64.pdf
+- Form 990:           https://www.lacasitacenter.org/_files/ugd/8759f2_a9139cd37a574f26bb82f1731e966724.pdf
+- BBB Charity Report: https://give.org/charity-reviews/human-services/la-casita-center-in-louisville-ky-0402-159154143
+- Support / Volunteer: https://www.lacasitacenter.org/support-us
+
+NOTE FOR ESL-VOICE CONTEXT
+The site (Wix-built) does not expose a dedicated "Programs" or ESL classes page at
+/programs (404 as of 2026-06-13). The homepage above is the canonical source of program
+context. Use these scenario hooks when generating lesson content:
+  - Family-oriented, intergenerational learners
+  - Latinx community in Louisville, KY (overlap with JCPS EL population)
+  - Trauma-informed, accompaniment-style framing
+  - Spanish/English bilingual context, 23 languages overall
+  - Civic, school-engagement, healthcare, and immigration touchpoints

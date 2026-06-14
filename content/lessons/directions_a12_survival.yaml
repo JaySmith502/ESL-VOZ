@@ -1,0 +1,82 @@
+lesson_id: directions_a12_survival
+title:
+  en: "Asking for Directions"
+  es: "Preguntando Direcciones"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a1.2-spk-surv-#2
+  - cefr-a1.2-lis-surv-#2
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A1.2
+estimated_minutes: 13
+prerequisites:
+  mastery_cells: []
+  vocab_known:
+    - please
+    - thank you
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice asking for and understanding directions."
+      es: "Hoy practicarás cómo pedir y entender direcciones."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these words: left, right, straight, corner, street, bus stop, near, far."
+      es: "Aprende estas palabras: left, right, straight, corner, street, bus stop, near, far."
+    config:
+      words:
+        - en: left
+          es: izquierda
+        - en: right
+          es: derecha
+        - en: straight
+          es: derecho
+        - en: corner
+          es: esquina
+        - en: street
+          es: calle
+        - en: bus stop
+          es: parada de autobús
+        - en: near
+          es: cerca
+        - en: far
+          es: lejos
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each word with its meaning."
+      es: "Empareja cada palabra con su significado."
+    config:
+      items:
+        - prompt: left
+          answer: izquierda
+        - prompt: right
+          answer: derecha
+        - prompt: straight
+          answer: derecho
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'Where is the bus stop?'"
+      es: "Practica: 'Where is the bus stop?'"
+    config:
+      target: "Where is the bus stop?"
+      mode: Speaking
+      acceptable_variants:
+        - "where is the bus stop"
+        - "where can i find the bus stop"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You practiced asking for directions in English."
+      es: "¡Muy bien! Practicaste cómo pedir direcciones en inglés."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

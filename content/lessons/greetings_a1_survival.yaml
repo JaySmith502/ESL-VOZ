@@ -1,0 +1,74 @@
+lesson_id: greetings_a1_survival
+title:
+  en: "Greetings and Introductions"
+  es: "Saludos y Presentaciones"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a1.1-spk-surv-#1
+  - cefr-a1.1-lis-surv-#1
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A1.1
+estimated_minutes: 10
+prerequisites:
+  mastery_cells: []
+  vocab_known: []
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice greeting people and introducing yourself."
+      es: "Hoy practicarás cómo saludar a las personas y presentarte."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these greetings: hello, good morning, good afternoon, good night, goodbye."
+      es: "Aprende estos saludos: hello, good morning, good afternoon, good night, goodbye."
+    config:
+      words:
+        - en: hello
+          es: hola
+        - en: good morning
+          es: buenos días
+        - en: good afternoon
+          es: buenas tardes
+        - en: good night
+          es: buenas noches
+        - en: goodbye
+          es: adiós
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each greeting with its meaning."
+      es: "Empareja cada saludo con su significado."
+    config:
+      items:
+        - prompt: hello
+          answer: hola
+        - prompt: good morning
+          answer: buenos días
+        - prompt: goodbye
+          answer: adiós
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'Hello, my name is ____.'"
+      es: "Practica: 'Hello, my name is ____.'"
+    config:
+      target: "Hello, my name is Maria."
+      mode: Speaking
+      acceptable_variants:
+        - "hello my name is maria"
+        - "hi my name is maria"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You can now greet people in English."
+      es: "¡Muy bien! Ahora puedes saludar a las personas en inglés."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

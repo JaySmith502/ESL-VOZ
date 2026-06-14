@@ -1,0 +1,82 @@
+lesson_id: family_intro_a1_survival
+title:
+  en: "Family Members"
+  es: "Miembros de la Familia"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a1.1-spk-surv-#4
+  - cefr-a1.1-lis-surv-#1
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A1.1
+estimated_minutes: 10
+prerequisites:
+  mastery_cells: []
+  vocab_known: []
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will learn words for family members."
+      es: "Hoy aprenderás palabras para los miembros de la familia."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these family words: mother, father, sister, brother, daughter, son, baby, husband, wife."
+      es: "Aprende estas palabras de familia: mother, father, sister, brother, daughter, son, baby, husband, wife."
+    config:
+      words:
+        - en: mother
+          es: madre
+        - en: father
+          es: padre
+        - en: sister
+          es: hermana
+        - en: brother
+          es: hermano
+        - en: daughter
+          es: hija
+        - en: son
+          es: hijo
+        - en: baby
+          es: bebé
+        - en: husband
+          es: esposo
+        - en: wife
+          es: esposa
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each word with its meaning."
+      es: "Empareja cada palabra con su significado."
+    config:
+      items:
+        - prompt: mother
+          answer: madre
+        - prompt: brother
+          answer: hermano
+        - prompt: daughter
+          answer: hija
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'This is my mother.'"
+      es: "Practica: 'This is my mother.'"
+    config:
+      target: "This is my mother."
+      mode: Speaking
+      acceptable_variants:
+        - "this is my mother"
+        - "she is my mother"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You can now talk about your family."
+      es: "¡Muy bien! Ahora puedes hablar de tu familia."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

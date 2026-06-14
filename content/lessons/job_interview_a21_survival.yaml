@@ -1,0 +1,85 @@
+lesson_id: job_interview_a21_survival
+title:
+  en: "Job Interview Basics"
+  es: "Básicos de una Entrevista de Trabajo"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a2.1-spk-surv-#1
+  - cefr-a2.1-lis-surv-#1
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A2.1
+estimated_minutes: 15
+prerequisites:
+  mastery_cells: []
+  vocab_known:
+    - hello
+    - please
+    - thank you
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice answering simple job interview questions."
+      es: "Hoy practicarás cómo responder preguntas simples en una entrevista de trabajo."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these words: job, work, experience, schedule, full-time, part-time, resume, interview, apply."
+      es: "Aprende estas palabras: job, work, experience, schedule, full-time, part-time, resume, interview, apply."
+    config:
+      words:
+        - en: job
+          es: trabajo
+        - en: work
+          es: trabajar
+        - en: experience
+          es: experiencia
+        - en: schedule
+          es: horario
+        - en: full-time
+          es: tiempo completo
+        - en: part-time
+          es: medio tiempo
+        - en: resume
+          es: currículum
+        - en: interview
+          es: entrevista
+        - en: apply
+          es: aplicar
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each word with its meaning."
+      es: "Empareja cada palabra con su significado."
+    config:
+      items:
+        - prompt: schedule
+          answer: horario
+        - prompt: resume
+          answer: currículum
+        - prompt: interview
+          answer: entrevista
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'I have experience in customer service.'"
+      es: "Practica: 'I have experience in customer service.'"
+    config:
+      target: "I have experience in customer service."
+      mode: Speaking
+      acceptable_variants:
+        - "i have experience in customer service"
+        - "i worked in customer service"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You practiced job interview phrases."
+      es: "¡Muy bien! Practicaste frases para entrevistas de trabajo."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

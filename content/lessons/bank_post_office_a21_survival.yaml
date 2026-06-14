@@ -1,0 +1,86 @@
+lesson_id: bank_post_office_a21_survival
+title:
+  en: "At the Bank and Post Office"
+  es: "En el Banco y la Oficina de Correos"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a2.1-spk-surv-#3
+  - cefr-a2.1-lis-surv-#3
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A2.1
+estimated_minutes: 14
+prerequisites:
+  mastery_cells: []
+  vocab_known:
+    - please
+    - thank you
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice common phrases at the bank and post office."
+      es: "Hoy practicarás frases comunes en el banco y la oficina de correos."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these words: bank, money, account, check, deposit, post office, stamp, envelope, package, address."
+      es: "Aprende estas palabras: bank, money, account, check, deposit, post office, stamp, envelope, package, address."
+    config:
+      words:
+        - en: bank
+          es: banco
+        - en: money
+          es: dinero
+        - en: account
+          es: cuenta
+        - en: check
+          es: cheque
+        - en: deposit
+          es: depósito
+        - en: post office
+          es: oficina de correos
+        - en: stamp
+          es: estampilla
+        - en: envelope
+          es: sobre
+        - en: package
+          es: paquete
+        - en: address
+          es: dirección
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each word with its meaning."
+      es: "Empareja cada palabra con su significado."
+    config:
+      items:
+        - prompt: account
+          answer: cuenta
+        - prompt: package
+          answer: paquete
+        - prompt: address
+          answer: dirección
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'I would like to send this package.'"
+      es: "Practica: 'I would like to send this package.'"
+    config:
+      target: "I would like to send this package."
+      mode: Speaking
+      acceptable_variants:
+        - "i would like to send this package"
+        - "i want to send this package"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You practiced phrases for the bank and post office."
+      es: "¡Muy bien! Practicaste frases para el banco y la oficina de correos."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

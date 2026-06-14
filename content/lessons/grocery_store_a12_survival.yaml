@@ -1,0 +1,86 @@
+lesson_id: grocery_store_a12_survival
+title:
+  en: "At the Grocery Store"
+  es: "En la Tienda de Comestibles"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a1.2-spk-surv-#4
+  - cefr-a1.2-lis-surv-#1
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A1.2
+estimated_minutes: 14
+prerequisites:
+  mastery_cells: []
+  vocab_known:
+    - please
+    - thank you
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice shopping for food."
+      es: "Hoy practicarás cómo comprar comida."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these words: apple, bread, milk, egg, rice, chicken, fruit, vegetable, bag, pay."
+      es: "Aprende estas palabras: apple, bread, milk, egg, rice, chicken, fruit, vegetable, bag, pay."
+    config:
+      words:
+        - en: apple
+          es: manzana
+        - en: bread
+          es: pan
+        - en: milk
+          es: leche
+        - en: egg
+          es: huevo
+        - en: rice
+          es: arroz
+        - en: chicken
+          es: pollo
+        - en: fruit
+          es: fruta
+        - en: vegetable
+          es: verdura
+        - en: bag
+          es: bolsa
+        - en: pay
+          es: pagar
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each word with its meaning."
+      es: "Empareja cada palabra con su significado."
+    config:
+      items:
+        - prompt: bread
+          answer: pan
+        - prompt: milk
+          answer: leche
+        - prompt: chicken
+          answer: pollo
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'Where can I find milk?'"
+      es: "Practica: 'Where can I find milk?'"
+    config:
+      target: "Where can I find milk?"
+      mode: Speaking
+      acceptable_variants:
+        - "where can i find milk"
+        - "where is the milk"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You practiced shopping for groceries."
+      es: "¡Muy bien! Practicaste cómo comprar comestibles."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

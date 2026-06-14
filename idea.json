@@ -1,0 +1,529 @@
+{
+  "project": {
+    "name": "ESL TimeBack-Inspired Learning Platform",
+    "version": "0.2.0",
+    "type": "MVP PRD",
+    "location_context": "Louisville, KY / JCPS pilot context"
+  },
+  "summary": "Build a self-hostable ESL learning platform for Latino immigrant students entering a public school system, using mastery-based progression, XP, a closed feedback loop, and a hybrid vector-plus-graph knowledge base.",
+  "target_users": {
+    "primary": [
+      "Latino immigrant students",
+      "beginner to intermediate English learners",
+      "students entering public school systems"
+    ],
+    "secondary": [
+      "ESL teachers",
+      "tutors",
+      "counselors",
+      "program coordinators",
+      "community support staff"
+    ]
+  },
+  "product_principles": [
+    "Mastery before advancement",
+    "Short focused sessions",
+    "Bilingual scaffolding",
+    "Closed feedback loop",
+    "Dashboard-first visibility",
+    "Start simple",
+    "Hybrid retrieval over pure text retrieval",
+    "Graph-ready architecture"
+  ],
+  "scope": {
+    "in_scope": [
+      "Student login and profile",
+      "Placement quiz",
+      "Adaptive learning path",
+      "AI conversation tutor",
+      "Vocabulary review with spaced repetition",
+      "Basic grammar and reading exercises",
+      "XP system and rewards",
+      "Student progress dashboard",
+      "Teacher dashboard",
+      "Content corpus ingestion and retrieval",
+      "Admin content management",
+      "Vector retrieval",
+      "Knowledge graph relationships for mastery and standards"
+    ],
+    "out_of_scope": [
+      "Full SIS integrations",
+      "Native mobile apps",
+      "Complex district rostering",
+      "Video generation",
+      "Enterprise multi-district features",
+      "High-stakes testing",
+      "Mandatory dependency on any single graph product"
+    ]
+  },
+  "functional_requirements": {
+    "student_experience": [
+      "Student can sign in",
+      "Student can take a placement assessment",
+      "Student sees daily goals and progress",
+      "Student completes lessons in speaking, listening, reading, writing",
+      "Student receives XP for completion and mastery",
+      "Student sees a time back reward meter",
+      "Student can review missed vocabulary and grammar"
+    ],
+    "adaptive_learning_engine": [
+      "Assess current skill level",
+      "Select next activity based on weakest area",
+      "Update future activities based on performance",
+      "Schedule spaced retrieval reviews",
+      "Track mastery per skill and per standard",
+      "Use graph relationships to reason about prerequisites and recommendations"
+    ],
+    "teacher_dashboard": [
+      "View students by cohort and status",
+      "See mastery by domain",
+      "See recent activity, XP, and time on task",
+      "Flag students needing support",
+      "Export simple reports"
+    ],
+    "content_management": [
+      "Upload or import ESL materials",
+      "Tag content by level, skill, topic, and language support",
+      "Store source metadata",
+      "Search and retrieve content for lesson generation and tutoring",
+      "Map content to standards and skill relationships"
+    ]
+  },
+  "curriculum": {
+    "learning_domains": [
+      "Speaking",
+      "Listening",
+      "Reading",
+      "Writing",
+      "Vocabulary",
+      "Grammar",
+      "Survival English",
+      "School English",
+      "Academic English"
+    ],
+    "levels": [
+      {
+        "name": "Level 0: Pre-beginning",
+        "outcomes": [
+          "Greetings",
+          "Numbers",
+          "Common classroom objects",
+          "Name, phone number, address",
+          "Help-seeking phrases"
+        ]
+      },
+      {
+        "name": "Level 1: Beginning",
+        "outcomes": [
+          "School routines",
+          "Family and home",
+          "Transportation",
+          "Food and shopping",
+          "Simple questions and answers"
+        ]
+      },
+      {
+        "name": "Level 2: Low Intermediate",
+        "outcomes": [
+          "Classroom participation",
+          "Past and future tense",
+          "Reading simple instructions",
+          "Writing short paragraphs"
+        ]
+      },
+      {
+        "name": "Level 3: Intermediate",
+        "outcomes": [
+          "Academic vocabulary",
+          "Presentations",
+          "Email and form writing",
+          "Content-area language"
+        ]
+      }
+    ]
+  },
+  "corpus_strategy": {
+    "priority_source_types": [
+      "Free adult ESL story banks",
+      "WIDA ELD standards and descriptors",
+      "Kentucky ELPS instructional framework",
+      "Local Louisville ESL tutor resources",
+      "Publicly available life-skills lessons",
+      "Bilingual English-Spanish support materials"
+    ],
+    "recommended_initial_source_buckets": [
+      "Minnesota Literacy Council style story banks",
+      "WIDA 2020 standards",
+      "Kentucky ELPS framework",
+      "JCPS adult ESL public pages",
+      "Latino Community Association tutor resources",
+      "English In Action resource lists",
+      "Colorin Colorado Kentucky resources"
+    ],
+    "source_handling_rules": [
+      "Store original source URL and title",
+      "Tag by proficiency level, theme, and skill",
+      "Keep copyright-sensitive text out of generated outputs unless clearly licensed",
+      "Prefer summaries, metadata, and short excerpts for retrieval",
+      "Represent sources as both text chunks and graph nodes when useful"
+    ]
+  },
+  "knowledge_base": {
+    "architecture": "hybrid_vector_plus_graph",
+    "metadata_fields": [
+      "source",
+      "source_url",
+      "source_type",
+      "level",
+      "skill_area",
+      "topic",
+      "language",
+      "license",
+      "date_ingested"
+    ],
+    "capabilities": [
+      "Vector search",
+      "Bilingual retrieval",
+      "PDF and HTML chunking",
+      "Prompt assembly for AI tutor",
+      "Search by topic or standard",
+      "Graph traversal for connected concepts",
+      "Graph-based prerequisite reasoning",
+      "Graph-augmented recommendations"
+    ],
+    "graph_layer_goals": [
+      "Represent standards -> skills -> lessons -> activities",
+      "Represent student -> assessments -> mastery gaps -> recommendations",
+      "Represent vocabulary -> translation -> examples -> related terms -> review schedule",
+      "Represent English concepts -> Spanish support -> school context",
+      "Represent teacher flags -> interventions -> follow-up outcomes"
+    ],
+    "initial_graph_scope": [
+      "Standards mapping graph",
+      "Student mastery graph",
+      "Vocabulary dependency graph"
+    ],
+    "graph_plus_vector_usage": [
+      "Vector retrieval for content chunks and prompts",
+      "Graph traversal for prerequisites and connected context",
+      "Graph-augmented prompt assembly for AI tutor responses",
+      "Graph-based recommendation of next lesson or review item"
+    ],
+    "implementation_note": "Cognee-style tooling is optional and should be treated as an implementation choice, not a hard dependency. The system must remain modular so the graph layer can be replaced or simplified without redesigning the product."
+  },
+  "ai_behavior": [
+    "Use simple sentence structure",
+    "Provide Spanish support when needed",
+    "Ask one question at a time for beginners",
+    "Gently correct errors",
+    "Adapt difficulty based on performance",
+    "Avoid long explanations",
+    "Prefer real-life contexts",
+    "Use graph-aware retrieval when choosing next activities",
+    "Prefer connected evidence over isolated chunks when a student has persistent gaps",
+    "Use standards mappings to justify recommendations for teachers"
+  ],
+  "core_loop": [
+    "Assess the learner",
+    "Assign an activity",
+    "Measure performance",
+    "Update mastery and XP",
+    "Schedule review",
+    "Adjust the next recommendation",
+    "Show progress to student and teacher"
+  ],
+  "xp_system": {
+    "rules": [
+      "Award XP for lesson completion, correctness, effort, and review success",
+      "Mastery earns more XP than completion alone",
+      "Reward meter unlocks time-back style benefits"
+    ],
+    "reward_model": [
+      "Badges",
+      "Streaks",
+      "Unlockable activities",
+      "Symbolic time back rewards"
+    ]
+  },
+  "data_model": {
+    "entities": [
+      "User",
+      "StudentProfile",
+      "TeacherProfile",
+      "Cohort",
+      "PlacementAssessment",
+      "SkillArea",
+      "Lesson",
+      "LessonStep",
+      "Attempt",
+      "MasteryRecord",
+      "XPEvent",
+      "ReviewSchedule",
+      "ContentSource",
+      "ContentChunk",
+      "StandardMapping",
+      "FeedbackNote",
+      "GraphNode",
+      "GraphEdge"
+    ],
+    "tables": [
+      {
+        "name": "users",
+        "fields": [
+          "id",
+          "role",
+          "name",
+          "email",
+          "password_hash",
+          "language_preference"
+        ]
+      },
+      {
+        "name": "student_profiles",
+        "fields": [
+          "user_id",
+          "native_language",
+          "english_level",
+          "cohort_id",
+          "school_name",
+          "goals"
+        ]
+      },
+      {
+        "name": "lessons",
+        "fields": [
+          "id",
+          "title",
+          "level",
+          "skill_area",
+          "topic",
+          "estimated_minutes",
+          "content_source_id",
+          "tags"
+        ]
+      },
+      {
+        "name": "mastery_records",
+        "fields": [
+          "student_id",
+          "skill_area",
+          "level",
+          "score",
+          "last_updated",
+          "evidence"
+        ]
+      },
+      {
+        "name": "xp_events",
+        "fields": [
+          "student_id",
+          "lesson_id",
+          "xp_amount",
+          "reason",
+          "timestamp"
+        ]
+      },
+      {
+        "name": "graph_nodes",
+        "fields": [
+          "id",
+          "node_type",
+          "label",
+          "metadata",
+          "created_at"
+        ]
+      },
+      {
+        "name": "graph_edges",
+        "fields": [
+          "id",
+          "source_node_id",
+          "target_node_id",
+          "edge_type",
+          "weight",
+          "metadata",
+          "created_at"
+        ]
+      }
+    ]
+  },
+  "api_surface": {
+    "student": [
+      "GET /me",
+      "POST /assessment/submit",
+      "GET /dashboard",
+      "GET /next-activity",
+      "POST /lesson/attempt",
+      "POST /review/complete"
+    ],
+    "teacher": [
+      "GET /teacher/cohort",
+      "GET /teacher/student/:id",
+      "GET /teacher/reports",
+      "POST /teacher/notes"
+    ],
+    "admin": [
+      "POST /content/import",
+      "GET /content/search",
+      "POST /cohort/create",
+      "POST /lesson/generate",
+      "POST /graph/rebuild",
+      "GET /graph/query"
+    ]
+  },
+  "tech_stack": {
+    "frontend": "React or Next.js",
+    "backend": "FastAPI or Node.js",
+    "database": "PostgreSQL",
+    "search": "pgvector or a vector DB",
+    "graph": "PostgreSQL graph tables, Neo4j, Memgraph, or Cognee-compatible layer",
+    "cache": "Redis",
+    "auth": "Email/password or magic link",
+    "charts": "Plotly",
+    "hosting": "Mini PC or low-cost VPS",
+    "llm": "Optional API or local model via Ollama"
+  },
+  "ux_requirements": [
+    "Mobile responsive",
+    "Spanish-first or bilingual interface support",
+    "Simple cards and progress bars",
+    "Minimal text density",
+    "Clear next-step call to action",
+    "Teacher views optimized for scanning"
+  ],
+  "non_functional_requirements": [
+    "Fast page loads",
+    "Offline-tolerant lesson drafts if possible",
+    "Accessible design",
+    "Low storage and compute footprint",
+    "Secure handling of student data",
+    "Audit logging for edits and progress updates"
+  ],
+  "privacy_and_safety": [
+    "Minimize personally identifiable information",
+    "Avoid storing unnecessary sensitive data",
+    "Provide consent-friendly architecture",
+    "Do not expose raw student conversation logs broadly",
+    "Separate admin and teacher permissions",
+    "Encrypt credentials and sensitive fields"
+  ],
+  "analytics": [
+    "Active students",
+    "Daily lesson completion",
+    "Mastery by skill",
+    "Vocabulary retention",
+    "Average session duration",
+    "XP earned per week",
+    "Review success rate",
+    "Teacher interventions"
+  ],
+  "milestones": [
+    {
+      "name": "Milestone 1",
+      "deliverables": [
+        "Auth",
+        "Profiles",
+        "Cohorts",
+        "Placement assessment",
+        "Basic dashboard",
+        "Vector retrieval"
+      ]
+    },
+    {
+      "name": "Milestone 2",
+      "deliverables": [
+        "Lessons",
+        "XP system",
+        "Mastery tracking",
+        "Standards mapping",
+        "Vocabulary dependency graph"
+      ]
+    },
+    {
+      "name": "Milestone 3",
+      "deliverables": [
+        "Spaced repetition",
+        "AI tutor",
+        "Corpus search/retrieval",
+        "Graph-augmented recommendations"
+      ]
+    },
+    {
+      "name": "Milestone 4",
+      "deliverables": [
+        "Teacher dashboard",
+        "Reporting",
+        "Pilot-ready polish",
+        "Optional Cognee-style evaluation"
+      ]
+    }
+  ],
+  "acceptance_criteria": [
+    "Student can log in and take a placement assessment",
+    "System recommends a next activity based on results",
+    "Student can complete lessons across the major language domains",
+    "XP and mastery update automatically",
+    "Teacher can view cohort and student status",
+    "Corpus search is functional and powers tutor responses",
+    "Platform can run at low cost",
+    "Graph layer can be enabled without redesigning the product"
+  ],
+  "build_tasks": [
+    "Scaffold repository",
+    "Create database schema",
+    "Implement auth",
+    "Build content ingestion pipeline",
+    "Build placement assessment",
+    "Implement mastery and XP logic",
+    "Create student dashboard",
+    "Create teacher dashboard",
+    "Add retrieval-backed tutor",
+    "Add review scheduler",
+    "Add export/reporting",
+    "Design graph schema for standards, skills, lessons, vocabulary, and student mastery",
+    "Implement graph ingestion from imported corpus chunks",
+    "Add graph-augmented retrieval to lesson recommendation",
+    "Add graph-backed tutor context assembly",
+    "Evaluate whether Cognee or a simpler graph store is sufficient for MVP"
+  ],
+  "repo_structure": [
+    "/app",
+    "/frontend",
+    "/backend",
+    "/content",
+    "/data",
+    "/docs",
+    "/tests",
+    "/scripts"
+  ],
+  "definition_of_done": [
+    "Local app runs",
+    "Seed corpus loads",
+    "One adaptive lesson flow works end to end",
+    "One teacher dashboard works",
+    "One retrieval-backed AI tutor path works",
+    "Logging and exports exist"
+  ],
+  "source_notes": [
+    {
+      "title": "ELD Standards Framework - WIDA",
+      "url": "https://wida.wisc.edu/teach/standards/eld",
+      "note": "Use the four-part WIDA framework as the standards backbone."
+    },
+    {
+      "title": "WIDA ACCESS - Kentucky Department of Education",
+      "url": "https://education.ky.gov/AA/Assessments/Pages/EL-Testing.aspx",
+      "note": "Kentucky uses WIDA ACCESS for annual English learner progress monitoring."
+    },
+    {
+      "title": "English as a Second Language—Adult | Jefferson County Public Schools",
+      "url": "https://www.jefferson.kyschools.us/page/english-as-a-second-languageadult",
+      "note": "Local Louisville adult ESL context for pilot alignment."
+    },
+    {
+      "title": "Knowledge Graph & Vector Store: GraphRAG for Reliable LLM Results",
+      "url": "https://www.cognee.ai/blog/deep-dives/cognee-graphrag-supercharging-search-with-knowledge-graphs-and-vector-magic",
+      "note": "Illustrates the hybrid vector-plus-graph retrieval approach."
+    }
+  ]
+}

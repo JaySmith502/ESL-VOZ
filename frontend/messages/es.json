@@ -1,0 +1,66 @@
+{
+  "splash": {
+    "title": "ESL-voice",
+    "subtitle": "Practica inglés a tu propio ritmo.",
+    "spanish": "Español",
+    "english": "English",
+    "bilingual": "Bilingüe"
+  },
+  "login": {
+    "title": "Bienvenido de nuevo",
+    "emailPlaceholder": "Ingresa tu correo electrónico",
+    "sendLink": "Enviar enlace mágico",
+    "checkingEmail": "Revisa tu correo electrónico para el enlace de inicio de sesión."
+  },
+  "verify": {
+    "verifying": "Iniciando sesión...",
+    "error": "El enlace es inválido o expiró."
+  },
+  "intake": {
+    "title": "Queremos conocerte",
+    "nativeLanguage": "Idioma nativo",
+    "yearsInUS": "Años en Estados Unidos",
+    "priorStudy": "¿Has estudiado inglés antes?",
+    "education": "Nivel educativo más alto",
+    "goal": "Meta principal",
+    "ageBand": "Rango de edad",
+    "continue": "Continuar"
+  },
+  "consent": {
+    "title": "Consentimiento",
+    "platformTerms": "Acepto los términos de la plataforma",
+    "voiceAudio": "Acepto el procesamiento de voz y audio (opcional)",
+    "anonymizedSharing": "Acepto compartir datos anónimos (opcional)",
+    "submit": "Continuar"
+  },
+  "placement": {
+    "title": "Evaluación de nivel",
+    "instructions": "Responde cada pregunta lo mejor que puedas. 'No sé' está bien.",
+    "submit": "Terminar",
+    "idk": "No sé",
+    "completeTitle": "Evaluación completa",
+    "overallBand": "Tu nivel de inicio",
+    "estimatedBands": "Niveles estimados por habilidad",
+    "goToLearn": "Ir a Aprender",
+    "example": "Ejemplo",
+    "typeAnswer": "Escribe tu respuesta..."
+  },
+  "learn": {
+    "title": "Tu siguiente actividad",
+    "noActivity": "No hay actividad disponible ahora.",
+    "start": "Comenzar",
+    "why": "¿Por qué esta actividad?",
+    "currentLevel": "Nivel actual",
+    "masteryMatrix": "Matriz de dominio",
+    "mode": "Modo",
+    "recommended": "Recomendado para ti"
+  },
+  "lesson": {
+    "continue": "Continuar",
+    "correct": "Buen trabajo",
+    "tryAgain": "Intenta de nuevo",
+    "whatIsInSpanish": "¿Cómo se dice en español",
+    "sayThis": "Di o escribe esto en inglés",
+    "check": "Verificar"
+  }
+}

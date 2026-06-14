@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://esl-voice.local/schemas/lesson.v1.json",
+  "title": "ESL-voice Lesson v1",
+  "type": "object",
+  "required": ["lesson_id", "title", "template_pattern", "target_descriptors", "modes", "components", "domain", "cefr_band", "estimated_minutes", "prerequisites", "content_refs", "steps", "completion_rules", "origin", "license"],
+  "properties": {
+    "lesson_id": { "type": "string", "pattern": "^[a-z0-9_]+$" },
+    "title": {
+      "type": "object",
+      "required": ["en", "es"],
+      "properties": {
+        "en": { "type": "string" },
+        "es": { "type": "string" }
+      }
+    },
+    "template_pattern": { "type": "string", "enum": ["PPP", "TBLT", "TPR", "sheltered"] },
+    "target_descriptors": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "modes": { "type": "array", "items": { "type": "string", "enum": ["Listening", "Speaking", "Reading", "Writing", "Mediation"] }, "minItems": 1 },
+    "components": { "type": "array", "items": { "type": "string", "enum": ["Vocabulary", "Grammar", "Pronunciation", "Pragmatics"] }, "minItems": 1 },
+    "domain": { "type": "string", "enum": ["Survival", "School", "Academic", "Workplace"] },
+    "cefr_band": { "type": "string", "enum": ["A1.1", "A1.2", "A2.1", "A2.2", "B1.1", "B1.2", "B2"] },
+    "estimated_minutes": { "type": "integer", "minimum": 1, "maximum": 60 },
+    "prerequisites": {
+      "type": "object",
+      "properties": {
+        "mastery_cells": { "type": "array" },
+        "vocab_known": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "content_refs": { "type": "object" },
+    "steps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["step_type"],
+        "properties": {
+          "step_type": { "type": "string", "enum": ["intro", "vocab_intro", "vocab_drill", "grammar_intro", "comprehension_check", "listen_passage", "read_passage", "production_speaking", "production_writing", "mediation", "tutor_subdialog", "reflection"] },
+          "prompt": {
+            "type": "object",
+            "properties": {
+              "en": { "type": "string" },
+              "es": { "type": "string" }
+            }
+          },
+          "config": { "type": "object" }
+        }
+      },
+      "minItems": 1
+    },
+    "completion_rules": {
+      "type": "object",
+      "required": ["done_when", "mastered_when"],
+      "properties": {
+        "done_when": { "type": "string" },
+        "mastered_when": { "type": "string" }
+      }
+    },
+    "origin": { "type": "string", "enum": ["authored", "generated_curated", "generated_uncurated"] },
+    "license": { "type": "string" }
+  }
+}

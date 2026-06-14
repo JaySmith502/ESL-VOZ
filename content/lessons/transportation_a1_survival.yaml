@@ -1,0 +1,84 @@
+lesson_id: transportation_a1_survival
+title:
+  en: "Transportation Basics"
+  es: "Transporte Básico"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a1.1-spk-surv-#5
+  - cefr-a1.1-lis-surv-#2
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A1.1
+estimated_minutes: 11
+prerequisites:
+  mastery_cells: []
+  vocab_known:
+    - please
+    - thank you
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice words for transportation."
+      es: "Hoy practicarás palabras para el transporte."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these words: bus, car, train, ticket, stop, station, airport, here, there."
+      es: "Aprende estas palabras: bus, car, train, ticket, stop, station, airport, here, there."
+    config:
+      words:
+        - en: bus
+          es: autobús
+        - en: car
+          es: carro
+        - en: train
+          es: tren
+        - en: ticket
+          es: boleto
+        - en: stop
+          es: parada
+        - en: station
+          es: estación
+        - en: airport
+          es: aeropuerto
+        - en: here
+          es: aquí
+        - en: there
+          es: allá
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each word with its meaning."
+      es: "Empareja cada palabra con su significado."
+    config:
+      items:
+        - prompt: bus
+          answer: autobús
+        - prompt: ticket
+          answer: boleto
+        - prompt: airport
+          answer: aeropuerto
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'I need a ticket, please.'"
+      es: "Practica: 'I need a ticket, please.'"
+    config:
+      target: "I need a ticket, please."
+      mode: Speaking
+      acceptable_variants:
+        - "i need a ticket please"
+        - "i would like a ticket please"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You practiced transportation words."
+      es: "¡Muy bien! Practicaste palabras de transporte."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

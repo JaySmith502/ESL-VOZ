@@ -1,0 +1,66 @@
+{
+  "splash": {
+    "title": "ESL-voice",
+    "subtitle": "Practice English at your own pace.",
+    "spanish": "Español",
+    "english": "English",
+    "bilingual": "Bilingüe"
+  },
+  "login": {
+    "title": "Welcome back",
+    "emailPlaceholder": "Enter your email",
+    "sendLink": "Send magic link",
+    "checkingEmail": "Check your email for the login link."
+  },
+  "verify": {
+    "verifying": "Logging you in...",
+    "error": "Link invalid or expired."
+  },
+  "intake": {
+    "title": "Let's get to know you",
+    "nativeLanguage": "Native language",
+    "yearsInUS": "Years in the U.S.",
+    "priorStudy": "Have you studied English before?",
+    "education": "Highest education level",
+    "goal": "Primary goal",
+    "ageBand": "Age band",
+    "continue": "Continue"
+  },
+  "consent": {
+    "title": "Consent",
+    "platformTerms": "I agree to the platform terms",
+    "voiceAudio": "I agree to voice and audio processing (optional)",
+    "anonymizedSharing": "I agree to anonymized data sharing (optional)",
+    "submit": "Continue"
+  },
+  "placement": {
+    "title": "Placement check",
+    "instructions": "Answer each question as best you can. 'I do not know' is okay.",
+    "submit": "Finish",
+    "idk": "I don't know",
+    "completeTitle": "Placement complete",
+    "overallBand": "Your starting level",
+    "estimatedBands": "Estimated levels by skill",
+    "goToLearn": "Go to Learn",
+    "example": "Example",
+    "typeAnswer": "Type your answer..."
+  },
+  "learn": {
+    "title": "Your next activity",
+    "noActivity": "No activity available right now.",
+    "start": "Start",
+    "why": "Why this activity?",
+    "currentLevel": "Current level",
+    "masteryMatrix": "Mastery matrix",
+    "mode": "Mode",
+    "recommended": "Recommended for you"
+  },
+  "lesson": {
+    "continue": "Continue",
+    "correct": "Good work",
+    "tryAgain": "Try again",
+    "whatIsInSpanish": "What is in Spanish",
+    "sayThis": "Say or type this in English",
+    "check": "Check"
+  }
+}

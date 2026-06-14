@@ -1,0 +1,85 @@
+lesson_id: emergency_a21_survival
+title:
+  en: "Emergency Phrases"
+  es: "Frases de Emergencia"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a2.1-spk-surv-#2
+  - cefr-a2.1-lis-surv-#2
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A2.1
+estimated_minutes: 13
+prerequisites:
+  mastery_cells: []
+  vocab_known:
+    - help
+    - hurt
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice phrases to use in an emergency."
+      es: "Hoy practicarás frases para usar en una emergencia."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these words: emergency, ambulance, police, fire, hospital, danger, accident, allergic, help."
+      es: "Aprende estas palabras: emergency, ambulance, police, fire, hospital, danger, accident, allergic, help."
+    config:
+      words:
+        - en: emergency
+          es: emergencia
+        - en: ambulance
+          es: ambulancia
+        - en: police
+          es: policía
+        - en: fire
+          es: fuego
+        - en: hospital
+          es: hospital
+        - en: danger
+          es: peligro
+        - en: accident
+          es: accidente
+        - en: allergic
+          es: alérgico
+        - en: help
+          es: ayuda
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each word with its meaning."
+      es: "Empareja cada palabra con su significado."
+    config:
+      items:
+        - prompt: ambulance
+          answer: ambulancia
+        - prompt: hospital
+          answer: hospital
+        - prompt: allergic
+          answer: alérgico
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'I need help. Call the police.'"
+      es: "Practica: 'I need help. Call the police.'"
+    config:
+      target: "I need help. Call the police."
+      mode: Speaking
+      acceptable_variants:
+        - "i need help call the police"
+        - "please call the police"
+        - "call the police i need help"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You practiced emergency phrases."
+      es: "¡Muy bien! Practicaste frases de emergencia."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

@@ -1,0 +1,90 @@
+lesson_id: numbers_time_a1_survival
+title:
+  en: "Numbers and Time"
+  es: "Números y la Hora"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a1.1-lis-surv-#3
+  - cefr-a1.1-spk-surv-#2
+modes:
+  - Listening
+  - Speaking
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A1.1
+estimated_minutes: 10
+prerequisites:
+  mastery_cells: []
+  vocab_known: []
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice numbers and telling time."
+      es: "Hoy practicarás números y cómo decir la hora."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these numbers and time words: one, two, three, four, five, six, seven, eight, nine, ten, o'clock, half, quarter."
+      es: "Aprende estos números y palabras del tiempo: one, two, three, four, five, six, seven, eight, nine, ten, o'clock, half, quarter."
+    config:
+      words:
+        - en: one
+          es: uno
+        - en: two
+          es: dos
+        - en: three
+          es: tres
+        - en: four
+          es: cuatro
+        - en: five
+          es: cinco
+        - en: six
+          es: seis
+        - en: seven
+          es: siete
+        - en: eight
+          es: ocho
+        - en: nine
+          es: nueve
+        - en: ten
+          es: diez
+        - en: o'clock
+          es: en punto
+        - en: half
+          es: media
+        - en: quarter
+          es: cuarto
+  - step_type: vocab_drill
+    prompt:
+      en: "Type the English word for each number."
+      es: "Escribe la palabra en inglés para cada número."
+    config:
+      items:
+        - prompt: cinco
+          answer: five
+        - prompt: ocho
+          answer: eight
+        - prompt: diez
+          answer: ten
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'It is three o'clock.'"
+      es: "Practica: 'It is three o'clock.'"
+    config:
+      target: "It is three o'clock."
+      mode: Speaking
+      acceptable_variants:
+        - "it is three o'clock"
+        - "it's three o'clock"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You practiced numbers and time."
+      es: "¡Muy bien! Practicaste números y la hora."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

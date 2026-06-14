@@ -1,0 +1,79 @@
+lesson_id: doctor_visit_a1_survival
+title:
+  en: "At the Doctor's Office"
+  es: "En el Consultorio del Doctor"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a1.1-spk-surv-#3
+  - cefr-a1.1-lis-surv-#2
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A1.1
+estimated_minutes: 12
+prerequisites:
+  mastery_cells: []
+  vocab_known:
+    - hello
+    - help
+    - hurt
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice asking for help when you do not feel well."
+      es: "Hoy practicarás cómo pedir ayuda cuando no te sientes bien."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these words: doctor, sick, head, stomach, hurt, medicine."
+      es: "Aprende estas palabras: doctor, sick, head, stomach, hurt, medicine."
+    config:
+      words:
+        - en: doctor
+          es: doctor
+        - en: sick
+          es: enfermo
+        - en: head
+          es: cabeza
+        - en: stomach
+          es: estómago
+        - en: hurt
+          es: doler
+        - en: medicine
+          es: medicina
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each word with its meaning."
+      es: "Empareja cada palabra con su significado."
+    config:
+      items:
+        - prompt: sick
+          answer: enfermo
+        - prompt: stomach
+          answer: estómago
+        - prompt: medicine
+          answer: medicina
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'My stomach hurts.'"
+      es: "Practica: 'My stomach hurts.'"
+    config:
+      target: "My stomach hurts."
+      mode: Speaking
+      acceptable_variants:
+        - "my stomach hurts"
+        - "i have stomach pain"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You practiced describing how you feel at the doctor's office."
+      es: "¡Muy bien! Practicaste cómo describir cómo te sientes en el consultorio del doctor."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0

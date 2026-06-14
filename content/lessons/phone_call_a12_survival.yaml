@@ -1,0 +1,84 @@
+lesson_id: phone_call_a12_survival
+title:
+  en: "Making a Phone Call"
+  es: "Haciendo una Llamada Telefónica"
+template_pattern: PPP
+target_descriptors:
+  - cefr-a1.2-spk-surv-#3
+  - cefr-a1.2-lis-surv-#2
+modes:
+  - Speaking
+  - Listening
+components:
+  - Vocabulary
+  - Pragmatics
+domain: Survival
+cefr_band: A1.2
+estimated_minutes: 13
+prerequisites:
+  mastery_cells: []
+  vocab_known:
+    - hello
+    - please
+    - thank you
+content_refs:
+  chunks: []
+steps:
+  - step_type: intro
+    prompt:
+      en: "Today you will practice making a simple phone call."
+      es: "Hoy practicarás cómo hacer una llamada telefónica simple."
+  - step_type: vocab_intro
+    prompt:
+      en: "Learn these words: phone, call, number, message, speak, wait, later, tomorrow."
+      es: "Aprende estas palabras: phone, call, number, message, speak, wait, later, tomorrow."
+    config:
+      words:
+        - en: phone
+          es: teléfono
+        - en: call
+          es: llamada
+        - en: number
+          es: número
+        - en: message
+          es: mensaje
+        - en: speak
+          es: hablar
+        - en: wait
+          es: esperar
+        - en: later
+          es: más tarde
+        - en: tomorrow
+          es: mañana
+  - step_type: vocab_drill
+    prompt:
+      en: "Match each word with its meaning."
+      es: "Empareja cada palabra con su significado."
+    config:
+      items:
+        - prompt: call
+          answer: llamada
+        - prompt: message
+          answer: mensaje
+        - prompt: tomorrow
+          answer: mañana
+  - step_type: production_speaking
+    prompt:
+      en: "Practice: 'Can I speak with Maria?'"
+      es: "Practica: 'Can I speak with Maria?'"
+    config:
+      target: "Can I speak with Maria?"
+      mode: Speaking
+      acceptable_variants:
+        - "can i speak with maria"
+        - "may i speak with maria"
+        - "can i talk to maria"
+  - step_type: reflection
+    prompt:
+      en: "Great job! You practiced making a phone call."
+      es: "¡Muy bien! Practicaste cómo hacer una llamada telefónica."
+completion_rules:
+  done_when: all_steps_attempted
+  mastered_when: production_steps_score >= 0.8
+origin: authored
+license: cc-by-sa-4.0
