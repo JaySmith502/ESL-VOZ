@@ -1,8 +1,15 @@
+from pathlib import Path
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+# Anchor the env file to the backend dir so tests / scripts run from anywhere
+# (project root, backend/, IDE cwd) all see the same config and don't fall back
+# to a root-level .env meant for docker-compose / the frontend.
+_BACKEND_ENV = Path(__file__).resolve().parents[2] / ".env"
 
 
 class Settings(BaseSettings):
-    model_config = SettingsConfigDict(env_file=".env")
+    model_config = SettingsConfigDict(env_file=str(_BACKEND_ENV), extra="ignore")
 
     database_url: str = "sqlite:///./eslvoice_dev.db"
     redis_url: str = "redis://localhost:6379/0"
