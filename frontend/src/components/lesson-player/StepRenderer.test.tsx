@@ -18,6 +18,7 @@ const messages = {
     whatIsInSpanish: "What is in Spanish",
     sayThis: "Say or type this in English",
     check: "Check",
+    turn: "Turn",
     typeAnswer: "Type your answer...",
   },
 };
@@ -132,6 +133,54 @@ describe("StepRenderer", () => {
       await user.type(screen.getByPlaceholderText("Type your answer..."), "hi there");
       await user.click(screen.getByRole("button", { name: "Check" }));
       await user.click(screen.getByRole("button", { name: "Continue" }));
+      expect(onComplete).toHaveBeenCalledWith(1.0);
+    });
+
+    it("empty subdialog config does not award a score", () => {
+      const onComplete = vi.fn();
+      renderStep({ step_type: "tutor_subdialog", config: { turns: [] } }, onComplete);
+      expect(screen.getByText(/no turns yet/i)).toBeInTheDocument();
+      expect(onComplete).not.toHaveBeenCalled();
+    });
+
+    it("tutor_subdialog steps through every turn and emits the mean score", async () => {
+      const user = userEvent.setup();
+      const onComplete = vi.fn();
+      renderStep(
+        {
+          step_type: "tutor_subdialog",
+          config: {
+            turns: [
+              {
+                prompt: { en: "Greet the cashier.", es: "Saluda al cajero." },
+                target: "Hello",
+                acceptable_variants: [],
+              },
+              {
+                prompt: { en: "Ask for the price." },
+                target: "How much is it?",
+                acceptable_variants: ["how much"],
+              },
+            ],
+          },
+        },
+        onComplete,
+      );
+
+      // Turn 1: type "Hello" → 1.0, Continue available
+      expect(screen.getByText(/turn 1 \/ 2/i)).toBeInTheDocument();
+      await user.type(screen.getByPlaceholderText("Type your answer..."), "Hello");
+      await user.click(screen.getByRole("button", { name: "Check" }));
+      await user.click(screen.getByRole("button", { name: "Continue" }));
+
+      // Turn 2: matches the variant
+      expect(screen.getByText(/turn 2 \/ 2/i)).toBeInTheDocument();
+      await user.type(screen.getByPlaceholderText("Type your answer..."), "how much");
+      await user.click(screen.getByRole("button", { name: "Check" }));
+      await user.click(screen.getByRole("button", { name: "Continue" }));
+
+      // Both turns scored 1.0 → mean 1.0 reported once.
+      expect(onComplete).toHaveBeenCalledTimes(1);
       expect(onComplete).toHaveBeenCalledWith(1.0);
     });
 

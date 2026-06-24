@@ -79,6 +79,8 @@ def get_student(
     traces = db.exec(
         select(RecommendationTrace)
         .where(RecommendationTrace.student_id == student.id)
+        # Exclude intervention rows — they live in /interventions, not here.
+        .where(RecommendationTrace.bucket_fired != "intervention")
         .order_by(RecommendationTrace.created_at.desc())
     ).all()
 
@@ -127,6 +129,8 @@ def create_intervention(
         raise HTTPException(status_code=404, detail="Student not found")
 
     # Store intervention as a special recommendation trace for now.
+    # ponytail: shared table with recommendations; split into its own model
+    # when audit volume justifies it.
     trace = RecommendationTrace(
         student_id=student.id,
         bucket_fired="intervention",
@@ -136,6 +140,37 @@ def create_intervention(
     db.add(trace)
     db.commit()
     return {"status": "recorded"}
+
+
+@router.get("/students/{student_id}/interventions")
+def list_interventions(
+    student_id: UUID,
+    user: User = Depends(require_instructor),
+    db: Session = Depends(get_db),
+):
+    """Audit trail of Flag/Note actions for one student.
+
+    Roadmap §M1 calls for an "audit table" — this is it, sourced from the same
+    rows the create endpoint writes.
+    """
+    student = db.exec(select(StudentProfile).where(StudentProfile.id == student_id)).first()
+    if not student:
+        raise HTTPException(status_code=404, detail="Student not found")
+
+    rows = db.exec(
+        select(RecommendationTrace)
+        .where(RecommendationTrace.student_id == student.id)
+        .where(RecommendationTrace.bucket_fired == "intervention")
+        .order_by(RecommendationTrace.created_at.desc())
+    ).all()
+    return [
+        {
+            "id": str(r.id),
+            "rationale": r.rationale,
+            "created_at": r.created_at,
+        }
+        for r in rows
+    ]
 
 
 @router.get("/costs")

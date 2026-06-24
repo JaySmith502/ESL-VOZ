@@ -1,7 +1,8 @@
 # Memory — desktop
 
-> Generated: 2026-06-24 15:37:05  
-> Total memories: **0**  
+> Generated: 2026-06-24 16:32:04  
+> Total memories: **4**  
+> Breakdown: instruction: 1, goal: 1, context: 1, learning: 1
 
 ---
 
@@ -9,7 +10,11 @@
 
 *Standing rules, constraints, and guidelines to always follow.*
 
-*No memories of this type.*
+### ESL-VOZ pytest must run as 'uv run pytest' from ba...
+
+ESL-VOZ pytest must run as 'uv run pytest' from backend/ — host's global pytest is broken with ImportError. Lesson lint: backend/.venv/Scripts/python.exe scripts/lint_lessons.py
+
+*Confidence: 1 | Status: active | Created: 2026-06-24T20:28:12*
 
 ---
 
@@ -33,7 +38,11 @@
 
 *Objectives, targets, and milestones to track progress.*
 
-*No memories of this type.*
+### ESL-VOZ next chunks in value order: (1) p95 voice-...
+
+ESL-VOZ next chunks in value order: (1) p95 voice-turn telemetry table+endpoint for M1 acceptance #6; (2) Sentry wiring; (3) affective-filter UI-string linter; (4) Standards Alignment single-learner report. Skip until later: streaming ASR/TTS, persona picker, WIDA toggle, prompt caching, Cognee/Memgraph.
+
+*Confidence: 0.95 | Status: active | Created: 2026-06-24T20:28:21*
 
 ---
 
@@ -65,7 +74,11 @@
 
 *Session summaries, status updates, and conversation state.*
 
-*No memories of this type.*
+### ESL-VOZ M1 status: walking skeleton complete with ...
+
+ESL-VOZ M1 status: walking skeleton complete with real Deepgram ASR (nova-2, 0.5 confidence gate), OpenAI TTS (tts-1), Claude haiku-4-5 correction with 2-layer guardrails (sanitize_transcript + _validate_correction), voice-consent gate on /tutor/subdialog/audio, instructor dashboard usable with Needs-Attention + audit table + Print/PDF. 104 backend + 18 frontend + 1 E2E tests passing. Read HANDOFF.md at repo root.
+
+*Confidence: 1 | Status: active | Created: 2026-06-24T20:28:36*
 
 ---
 
@@ -81,7 +94,11 @@
 
 *Knowledge acquired from experience, corrections, and insights.*
 
-*No memories of this type.*
+### npkill run from C:\ or C:\Users\smith deletes node...
+
+npkill run from C:\ or C:\Users\smith deletes node_modules bundled inside installed apps (VS Code at resources\app\node_modules, Docker Desktop resources, etc.), bricking them with 'This app can't run on your PC'. Always scope npkill to a specific dev folder with -d <path>.
+
+*Confidence: 1 | Status: active | Created: 2026-06-24T19:39:16*
 
 ---
 

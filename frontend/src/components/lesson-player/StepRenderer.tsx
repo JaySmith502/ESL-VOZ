@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { ListenButton } from "./ListenButton";
 import { VoiceRecorder } from "./VoiceRecorder";
 
 function normalize(text: string): string {
@@ -78,6 +79,15 @@ export function StepRenderer({
         <ProductionSpeaking
           target={config.target}
           acceptableVariants={config.acceptable_variants || []}
+          onComplete={onComplete}
+          t={t}
+        />
+      );
+
+    case "tutor_subdialog":
+      return (
+        <TutorSubdialog
+          turns={config.turns || []}
           onComplete={onComplete}
           t={t}
         />
@@ -166,6 +176,70 @@ function VocabDrill({
   );
 }
 
+// A `tutor_subdialog` turn is a tutor line (`prompt`) the learner must respond
+// to with `target` (or one of `acceptable_variants`). M1 lazy version: each
+// turn is scored locally with the same scorer as production_speaking, no LLM
+// in the loop yet — Anthropic-driven conversation comes in M2.
+type SubdialogTurn = {
+  prompt: { en: string; es?: string };
+  target: string;
+  acceptable_variants?: string[];
+};
+
+function TutorSubdialog({
+  turns,
+  onComplete,
+  t,
+}: {
+  turns: SubdialogTurn[];
+  onComplete: (score: number) => void;
+  t: any;
+}) {
+  const [index, setIndex] = useState(0);
+  const [scores, setScores] = useState<number[]>([]);
+
+  if (!turns.length) {
+    // Defensive: a malformed lesson YAML shouldn't silently award a perfect
+    // score. Surface that the step is empty.
+    return <p className="text-amber-600">This sub-dialog has no turns yet.</p>;
+  }
+
+  const turn = turns[index];
+  const isLast = index === turns.length - 1;
+
+  const handleTurn = (score: number) => {
+    const next = [...scores, score];
+    if (isLast) {
+      const mean = next.reduce((a, b) => a + b, 0) / next.length;
+      onComplete(Math.round(mean * 100) / 100);
+    } else {
+      setScores(next);
+      setIndex(index + 1);
+    }
+  };
+
+  return (
+    <div>
+      <p className="text-sm text-gray-500 mb-2">
+        {t("turn") || "Turn"} {index + 1} / {turns.length}
+      </p>
+      <p className="text-lg mb-2">{turn.prompt.en}</p>
+      {turn.prompt.es && (
+        <p className="text-gray-600 mb-4 italic">{turn.prompt.es}</p>
+      )}
+      {/* Reuse ProductionSpeaking's controls per turn. Remount when index
+          changes so internal state (answer/checked) resets cleanly. */}
+      <ProductionSpeaking
+        key={index}
+        target={turn.target}
+        acceptableVariants={turn.acceptable_variants || []}
+        onComplete={handleTurn}
+        t={t}
+      />
+    </div>
+  );
+}
+
 function ProductionSpeaking({
   target,
   acceptableVariants,
@@ -184,7 +258,10 @@ function ProductionSpeaking({
   return (
     <div>
       <p className="text-lg mb-2">{t("sayThis") || "Say or type this in English"}:</p>
-      <p className="bg-gray-100 p-3 rounded-lg mb-4 font-medium">{target}</p>
+      <p className="bg-gray-100 p-3 rounded-lg mb-4 font-medium">
+        <ListenButton text={target} />
+        {target}
+      </p>
       <input
         value={answer}
         onChange={(e) => {

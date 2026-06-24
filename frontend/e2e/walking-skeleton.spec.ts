@@ -119,12 +119,25 @@ test.describe("walking skeleton", () => {
         break;
       }
       const input = page.locator('input[type="text"], input:not([type])').first();
-      if (await input.isVisible().catch(() => false)) {
-        // vocab_drill or production_speaking — any non-empty answer is fine.
-        await input.fill("hello");
-      }
       const check = page.getByRole("button", { name: /^check$/i });
-      if (await check.isVisible().catch(() => false)) {
+      const checkVisible = await check.isVisible().catch(() => false);
+      if (await input.isVisible().catch(() => false)) {
+        // production_speaking gates Continue behind a passing score, so when
+        // the Check button is present (= speaking step) we mirror the target
+        // text in the highlighted prompt block. For other steps any non-empty
+        // answer is fine.
+        let answer = "hello";
+        if (checkVisible) {
+          const target = await page
+            .locator("p.bg-gray-100")
+            .first()
+            .textContent({ timeout: 1000 })
+            .catch(() => null);
+          if (target?.trim()) answer = target.trim();
+        }
+        await input.fill(answer);
+      }
+      if (checkVisible) {
         await check.click();
       }
       await page.getByRole("button", { name: /^continue$/i }).first().click();

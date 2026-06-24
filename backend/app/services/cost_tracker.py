@@ -8,6 +8,9 @@ COST_RATES = {
     "anthropic": {
         "claude-3-haiku": {"input_per_1m": 0.25, "output_per_1m": 1.25},
         "claude-3-sonnet": {"input_per_1m": 3.0, "output_per_1m": 15.0},
+        # Claude 4.5 Haiku list price as of M1; bump together with model id in
+        # app.services.correction if Anthropic re-prices.
+        "claude-haiku-4-5": {"input_per_1m": 1.0, "output_per_1m": 5.0},
     },
     "openai": {
         "tts-1": {"per_1k_chars": 0.015},
