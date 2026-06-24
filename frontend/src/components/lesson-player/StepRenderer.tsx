@@ -214,23 +214,24 @@ function ProductionSpeaking({
           <p className={`mb-4 font-medium ${score >= 0.8 ? "text-green-600" : "text-amber-600"}`}>
             {score >= 0.8 ? t("correct") : t("tryAgain")}
           </p>
-          {score < 0.8 && (
+          {score < 0.8 ? (
             <button
               onClick={() => {
                 setAnswer("");
                 setChecked(false);
               }}
-              className="rounded-lg border px-6 py-3 font-medium mr-3 hover:bg-gray-50"
+              className="rounded-lg border px-6 py-3 font-medium hover:bg-gray-50"
             >
               {t("tryAgain")}
             </button>
+          ) : (
+            <button
+              onClick={() => onComplete(score)}
+              className="rounded-lg bg-brand-600 px-6 py-3 text-white font-medium hover:bg-brand-700"
+            >
+              {t("continue")}
+            </button>
           )}
-          <button
-            onClick={() => onComplete(score)}
-            className="rounded-lg bg-brand-600 px-6 py-3 text-white font-medium hover:bg-brand-700"
-          >
-            {t("continue")}
-          </button>
         </div>
       )}
     </div>

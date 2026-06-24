@@ -135,7 +135,7 @@ describe("StepRenderer", () => {
       expect(onComplete).toHaveBeenCalledWith(1.0);
     });
 
-    it("partial overlap yields fractional score and shows Try again", async () => {
+    it("partial overlap blocks Continue and only offers Try again", async () => {
       const user = userEvent.setup();
       const onComplete = renderStep({
         step_type: "production_speaking",
@@ -144,9 +144,9 @@ describe("StepRenderer", () => {
       await user.type(screen.getByPlaceholderText("Type your answer..."), "water please");
       await user.click(screen.getByRole("button", { name: "Check" }));
       expect(screen.getAllByText("Try again").length).toBeGreaterThan(0);
-      await user.click(screen.getByRole("button", { name: "Continue" }));
-      // 2 of 5 words = 0.4
-      expect(onComplete).toHaveBeenCalledWith(0.4);
+      // Continue must NOT be reachable on a failing score — the lesson should not advance.
+      expect(screen.queryByRole("button", { name: "Continue" })).toBeNull();
+      expect(onComplete).not.toHaveBeenCalled();
     });
   });
 });

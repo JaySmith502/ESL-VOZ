@@ -57,12 +57,48 @@ async def tutor_subdialog(
     variants = variants or []
 
     # Transcription path
+    if audio_bytes is not None and len(audio_bytes) == 0:
+        # Recorder posted an empty blob — no audio captured.
+        return {
+            "score": 0.0,
+            "transcript": "",
+            "target": target,
+            "feedback_en": "We didn't hear anything. Tap the mic and try again, or type your answer.",
+            "feedback_l1": "We didn't hear anything. Tap the mic and try again, or type your answer.",
+            "audio_url": None,
+            "cost_usd": 0.0,
+            "used_live_ai": False,
+        }
     if audio_bytes and settings.deepgram_api_key:
         # TODO: integrate deepgram-sdk transcriptions
         transcript = ""
-    final_transcript = transcript or target
+    if audio_bytes and not transcript:
+        # Audio was sent but we have no transcript (no ASR key, or ASR returned empty).
+        # ponytail: stub fallback; replace when Deepgram is wired in.
+        return {
+            "score": 0.0,
+            "transcript": "",
+            "target": target,
+            "feedback_en": "Speech recognition is unavailable right now. Type your answer to continue.",
+            "feedback_l1": "Speech recognition is unavailable right now. Type your answer to continue.",
+            "audio_url": None,
+            "cost_usd": 0.0,
+            "used_live_ai": False,
+        }
+    if not transcript:
+        # No audio, no transcript — nothing to score.
+        return {
+            "score": 0.0,
+            "transcript": "",
+            "target": target,
+            "feedback_en": "Please record or type an answer.",
+            "feedback_l1": "Please record or type an answer.",
+            "audio_url": None,
+            "cost_usd": 0.0,
+            "used_live_ai": False,
+        }
 
-    score, recognized, feedback_en = _score_utterance(target, variants, final_transcript)
+    score, recognized, feedback_en = _score_utterance(target, variants, transcript)
 
     feedback_l1 = feedback_en  # TODO: translate to L1 when OpenAI/Anthropic enabled
 
