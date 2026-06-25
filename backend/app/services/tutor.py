@@ -7,6 +7,7 @@ Deepgram (ASR), Anthropic (correction), and OpenAI (TTS).
 
 import logging
 import re
+import time
 from typing import Any
 
 from app.core.config import settings
@@ -88,6 +89,8 @@ async def tutor_subdialog(
     variants = variants or []
     cost_usd = 0.0
     asr_meta: dict[str, Any] = {}
+    asr_ms: int | None = None
+    llm_ms: int | None = None
 
     # --- Audio path ---
     if audio_bytes is not None and len(audio_bytes) == 0:
@@ -102,6 +105,7 @@ async def tutor_subdialog(
                 target,
                 "Speech recognition is unavailable right now. Type your answer to continue.",
             )
+        t0 = time.perf_counter()
         try:
             result = await transcribe_deepgram(
                 audio_bytes, settings.deepgram_api_key, mimetype=mimetype
@@ -112,6 +116,7 @@ async def tutor_subdialog(
                 target,
                 "We couldn't transcribe that. Try again, or type your answer.",
             )
+        asr_ms = int((time.perf_counter() - t0) * 1000)
         transcript = result["transcript"]
         confidence = result["confidence"]
         duration_s = result["duration_s"]
@@ -145,6 +150,7 @@ async def tutor_subdialog(
     used_llm = False
     correction_meta: dict[str, Any] = {}
     if settings.anthropic_api_key:
+        t0 = time.perf_counter()
         try:
             corr = await correct_with_claude(
                 target=target,
@@ -152,6 +158,7 @@ async def tutor_subdialog(
                 l1=l1,
                 api_key=settings.anthropic_api_key,
             )
+            llm_ms = int((time.perf_counter() - t0) * 1000)
             score = corr["score"]
             feedback_en = corr["feedback_en"]
             feedback_l1 = corr["feedback_l1"]
@@ -185,6 +192,8 @@ async def tutor_subdialog(
         "audio_url": None,
         "cost_usd": cost_usd,
         "used_live_ai": bool((settings.deepgram_api_key and audio_bytes) or used_llm),
+        "asr_ms": asr_ms,
+        "llm_ms": llm_ms,
         **asr_meta,
         **correction_meta,
     }

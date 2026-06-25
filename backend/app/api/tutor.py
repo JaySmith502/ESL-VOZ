@@ -1,3 +1,4 @@
+import time
 from typing import Any
 
 from fastapi import APIRouter, Depends, HTTPException, UploadFile
@@ -7,7 +8,7 @@ from sqlmodel import Session, select
 
 from app.core.config import settings
 from app.db import get_db
-from app.models import ConsentLayer, StudentProfile, User
+from app.models import ConsentLayer, StudentProfile, User, VoiceTurnEvent
 from app.services.auth import has_consent, require_user
 from app.services.cost_tracker import record_cost
 from app.services.tts import (
@@ -102,6 +103,14 @@ async def subdialog_audio(
             student_id=profile.id,
             meta={"model": "claude-haiku-4-5"},
         )
+    asr_ms = result.get("asr_ms")
+    llm_ms = result.get("llm_ms")
+    if asr_ms is not None or llm_ms is not None:
+        total = (asr_ms or 0) + (llm_ms or 0)
+        db.add(VoiceTurnEvent(
+            student_id=profile.id, asr_ms=asr_ms, llm_ms=llm_ms, total_ms=total,
+        ))
+        db.commit()
     return result
 
 
@@ -132,12 +141,14 @@ async def tts(
     profile = db.exec(
         select(StudentProfile).where(StudentProfile.user_id == user.id)
     ).first()
+    t0 = time.perf_counter()
     try:
         audio_bytes = await synthesize_openai(
             request.text, settings.openai_api_key, voice=request.voice or "nova"
         )
     except OpenAITTSError as e:
         raise HTTPException(status_code=502, detail=f"TTS failed: {e}") from e
+    tts_ms = int((time.perf_counter() - t0) * 1000)
 
     cost_usd = round(len(request.text) * _TTS_USD_PER_CHAR, 6)
     record_cost(
@@ -148,6 +159,10 @@ async def tts(
         student_id=profile.id if profile else None,
         meta={"model": OPENAI_TTS_MODEL, "chars": len(request.text)},
     )
+    db.add(VoiceTurnEvent(
+        student_id=profile.id if profile else None, tts_ms=tts_ms, total_ms=tts_ms,
+    ))
+    db.commit()
     return Response(
         content=audio_bytes,
         media_type="audio/mpeg",

@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta, timezone
+from statistics import quantiles
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, HTTPException, status
@@ -5,7 +7,16 @@ from pydantic import BaseModel
 from sqlmodel import Session, select
 
 from app.db import get_db
-from app.models import Cohort, CostEvent, MasteryCell, RecommendationTrace, StudentProfile, User, UserRole
+from app.models import (
+    Cohort,
+    CostEvent,
+    MasteryCell,
+    RecommendationTrace,
+    StudentProfile,
+    User,
+    UserRole,
+    VoiceTurnEvent,
+)
 from app.services.auth import require_user
 
 router = APIRouter()
@@ -171,6 +182,50 @@ def list_interventions(
         }
         for r in rows
     ]
+
+
+def _p95(values: list[int]) -> int:
+    """p95 by stdlib quantiles. Needs >=2 points; falls back to max otherwise.
+
+    ponytail: statistics.quantiles is fine up to ~10k points; swap for a streaming
+    digest if/when telemetry volume crosses that.
+    """
+    if not values:
+        return 0
+    if len(values) < 2:
+        return values[0]
+    return int(quantiles(values, n=100, method="inclusive")[94])
+
+
+@router.get("/telemetry/voice-p95")
+def voice_p95(
+    days: int = 7,
+    user: User = Depends(require_instructor),
+    db: Session = Depends(get_db),
+):
+    """p95 latency for the voice pipeline (M1 acceptance #6 — target ≤ 2500 ms)."""
+    since = datetime.now(timezone.utc) - timedelta(days=days)
+    rows = db.exec(
+        select(VoiceTurnEvent).where(VoiceTurnEvent.created_at >= since)
+    ).all()
+    asr = [r.asr_ms for r in rows if r.asr_ms is not None]
+    llm = [r.llm_ms for r in rows if r.llm_ms is not None]
+    tts = [r.tts_ms for r in rows if r.tts_ms is not None]
+    # "Voice turn" = ASR + correction; TTS reported separately.
+    turn_totals = [(r.asr_ms or 0) + (r.llm_ms or 0) for r in rows if r.asr_ms or r.llm_ms]
+    return {
+        "window_days": days,
+        "sample_size": len(rows),
+        "voice_turn_count": len(turn_totals),
+        "p95_ms": {
+            "asr": _p95(asr),
+            "llm": _p95(llm),
+            "tts": _p95(tts),
+            "voice_turn_total": _p95(turn_totals),
+        },
+        "target_ms": 2500,
+        "meets_target": _p95(turn_totals) <= 2500 if turn_totals else None,
+    }
 
 
 @router.get("/costs")

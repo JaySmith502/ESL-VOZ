@@ -9,6 +9,7 @@ from .lesson import Lesson
 from .lesson_step import LessonStep
 from .recommendation_trace import RecommendationTrace
 from .cost_event import CostEvent
+from .voice_turn_event import VoiceTurnEvent
 
 __all__ = [
     "User",
@@ -26,4 +27,5 @@ __all__ = [
     "LessonStep",
     "RecommendationTrace",
     "CostEvent",
+    "VoiceTurnEvent",
 ]
